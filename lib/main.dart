@@ -87,7 +87,7 @@ class _LoginState extends State<Login> {
                         // Navigate the user to the Home page
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Please fill input')),
+                          const SnackBar(content: Text('Por favor llene los campos de Login')),
                         );
                       }
                     },
@@ -100,5 +100,32 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key, required this.email});
+
+  final String email;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Home Page'),
+        ),
+        body: Column(
+          children: [
+            Text(email),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text("Go back!"),
+              ),
+            ),
+          ],
+        ));
   }
 }
