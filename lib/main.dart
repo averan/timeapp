@@ -84,10 +84,24 @@ class _LoginState extends State<Login> {
                   child: ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        // Navigate the user to the Home page
+                        if (emailController.text == "info@info.com" &&
+                            passwordController.text == "123") {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomePage(
+                                      email: emailController.text,
+                                    )),
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text('Invalid Credentials')),
+                          );
+                        }
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Por favor llene los campos de Login')),
+                          const SnackBar(content: Text('Please fill input')),
                         );
                       }
                     },
